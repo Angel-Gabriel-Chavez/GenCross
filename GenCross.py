@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 def sort_letters(word):
     lr = word.replace('', ' ').strip().split(' ')
@@ -12,4 +13,8 @@ def cross(col, ind):
         for j in ind:
             nls.append(sort_letters(i + j))
         ls.append(nls)
-    return np.array(ls)
+    return pd.DataFrame(ls, columns=col, index=ind)
+
+g1 = input('Genotype 1: ').replace(' ','').split(',')
+g2 = input('Genotype 2: ').replace(' ','').split(',')
+print(cross(g1, g2))
